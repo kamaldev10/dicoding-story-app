@@ -66,6 +66,10 @@ export class AddStoryPresenter {
 
       this.map = L.map(mapEl).setView([-6.2, 106.8], 13);
 
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(
+        this.map
+      );
+
       this.map.on("click", (e) => {
         const { lat, lng } = e.latlng;
         if (this.marker) {
