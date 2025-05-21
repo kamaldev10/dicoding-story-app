@@ -64,9 +64,6 @@ export class AddStoryPresenter {
         return;
       }
 
-      if (mapEl._leaflet_id) {
-        mapEl._leaflet_id = null; // penting untuk reset internal Leaflet
-      }
       this.map = L.map(mapEl).setView([-6.2, 106.8], 13);
 
       this.map.on("click", (e) => {
