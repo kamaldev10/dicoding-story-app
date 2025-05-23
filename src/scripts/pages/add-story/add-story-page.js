@@ -86,7 +86,7 @@ const AddStoryPage = {
           <div class="mb-6">
             <i class="fas fa-solid fa-shield-alt text-8xl opacity-90" style="--fa-primary-color: gold;"></i>
           </div>
-          <h2 class="text-3xl font-bold mb-4">Akses Terbatas</h2>
+          <h1 class="text-3xl font-bold mb-4">Akses Terbatas</h1>
           <p class="text-red-500 text-lg leading-relaxed">
             Halaman tambah cerita hanya dapat diakses setelah Anda melakukan login terlebih dahulu.
           </p>

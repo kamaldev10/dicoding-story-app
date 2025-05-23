@@ -6,7 +6,7 @@ const LoginPage = {
     return `
       <div class="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-400 to-purple-500">
         <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
-          <h2 class="text-2xl font-bold text-center mb-6">Login</h2>
+          <h1 class="text-2xl font-bold text-center mb-6">Login</h1>
           <form id="loginForm" class="space-y-4">
             <div>
               <label for="email" class="block text-sm font-medium">Email</label>

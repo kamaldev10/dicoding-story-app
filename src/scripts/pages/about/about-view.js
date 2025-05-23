@@ -8,7 +8,7 @@ class AboutView {
       <section class="py-16 bg-white" id="about">
         <div class="container mx-auto px-4">
           <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold text-gray-800">About Me</h2>
+            <h1 class="text-3xl font-bold text-gray-800">About Me</h1>
             <div class="w-16 h-1 bg-blue-600 mx-auto mt-4 mb-6"></div>
             <p class="text-gray-600 max-w-2xl mx-auto">Get to know the person behind the application.</p>
           </div>

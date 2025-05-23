@@ -38,7 +38,7 @@ export class DetailView {
     </button>
       <img src="${story.photoUrl}" alt="Story image" class="w-full h-64 object-cover rounded-t-xl">
       <div class="p-6">
-        <h2 class="text-2xl font-bold text-gray-800">${story.name}</h2>
+        <h1 class="text-2xl font-bold text-gray-800">${story.name}</h1>
         <p class="text-gray-700 mt-4 whitespace-pre-line">${story.description}</p>
         <p class="text-sm text-gray-500 mt-6">📅 ${date}</p>
       </div>

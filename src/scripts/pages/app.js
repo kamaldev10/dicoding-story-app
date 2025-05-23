@@ -48,7 +48,7 @@ class App {
       this.#navigationContainer.style.display = "none";
       this.#navigationDrawer.style.display = "none";
 
-      footerPresenter.clear(); // Clear the footer if on auth pages
+      footerPresenter.clear();
     }
 
     try {

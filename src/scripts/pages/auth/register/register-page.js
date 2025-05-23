@@ -5,7 +5,7 @@ const RegisterPage = {
     return `
       <div class="min-h-screen flex items-center justify-center bg-gradient-to-r from-green-400 to-teal-500">
         <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
-          <h2 class="text-2xl font-bold text-center mb-6">Daftar</h2>
+          <h1 class="text-2xl font-bold text-center mb-6">Daftar</h1>
           <form id="registerForm" class="space-y-4">
             <div>
               <label for="name" class="block text-sm font-medium">Nama</label>

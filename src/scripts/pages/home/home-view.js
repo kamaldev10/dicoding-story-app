@@ -38,7 +38,7 @@ export class HomeView {
             <img src="${story.photoUrl}" alt="${story.name}" class="h-48 max-w-md object-cover md:h-full md:w-48 sm:w-full sm:h-full">
           </div>
           <div class="p-8">
-            <h3 class="capitalize tracking-wide text-sm text-black font-semibold">${story.name}</h3>
+            <h1 class="capitalize tracking-wide text-sm text-black font-semibold">${story.name}</h1>
             <p class="mt-2 text-black">${story.description}</p>
             ${
               story.lat && story.lon
