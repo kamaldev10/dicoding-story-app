@@ -1,6 +1,6 @@
 import "../styles/styles.css";
 import App from "./pages/app";
-
+import { CameraUtils } from "./utils/camera-utils";
 document.addEventListener("DOMContentLoaded", async () => {
   const mainContent = document.querySelector("#mainContent");
   const drawerButton = document.querySelector("#drawer-button");
@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     navigationDrawer: navigationDrawer,
     navigationContainer: navigationContainer,
   });
+
   await app.renderPage();
 
   window.addEventListener("hashchange", async () => {

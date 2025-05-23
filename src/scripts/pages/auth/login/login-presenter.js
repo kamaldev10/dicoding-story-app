@@ -3,7 +3,7 @@ import AuthApi from "../../../data/auth-api";
 export class LoginPresenter {
   constructor(view) {
     this.view = view;
-    this.authApi = new AuthApi();
+    this.model = new AuthApi();
   }
 
   validate(email, password) {
@@ -35,7 +35,7 @@ export class LoginPresenter {
     this.view.setLoadingState(true);
 
     try {
-      const result = await this.authApi.login({ email, password });
+      const result = await this.model.login({ email, password });
 
       if (result.error) {
         throw new Error(result.message || "Login gagal.");

@@ -1,14 +1,22 @@
 export const CameraUtils = {
-  async initCamera(videoEl) {
+  stream: null, // <--- penting
+
+  async startCamera(videoElement) {
     try {
-      console.log("Meminta akses kamera...");
       const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-      console.log("Akses kamera diterima");
-      videoEl.srcObject = stream;
-      await videoEl.play();
-      console.log("Video diputar");
-    } catch (err) {
-      console.error("Gagal mengakses kamera:", err);
+      videoElement.srcObject = stream;
+      await videoElement.play();
+      this.stream = stream;
+    } catch (error) {
+      throw new Error("Tidak dapat mengakses kamera.");
+    }
+  },
+
+  stopCamera() {
+    if (this.stream && this.stream.getTracks) {
+      this.stream.getTracks().forEach((track) => track.stop());
+      this.stream = null;
+      return;
     }
   },
 
@@ -20,28 +28,23 @@ export const CameraUtils = {
     captureBtn,
     recaptureBtn,
   }) {
-    const context = canvasEl.getContext("2d");
+    const ctx = canvasEl.getContext("2d");
     canvasEl.width = videoEl.videoWidth;
     canvasEl.height = videoEl.videoHeight;
-    context.drawImage(videoEl, 0, 0);
+    ctx.drawImage(videoEl, 0, 0);
 
-    canvasEl.toBlob(
-      (blob) => {
-        const file = new File([blob], "captured.jpg", { type: "image/jpeg" });
-        const dataTransfer = new DataTransfer();
-        dataTransfer.items.add(file);
-        photoInputEl.files = dataTransfer.files;
+    canvasEl.toBlob((blob) => {
+      const file = new File([blob], "photo.jpg", { type: "image/jpeg" });
+      const dataTransfer = new DataTransfer();
+      dataTransfer.items.add(file);
+      photoInputEl.files = dataTransfer.files;
 
-        const imgUrl = URL.createObjectURL(file);
-        previewImgEl.src = imgUrl;
-        previewImgEl.classList.remove("hidden");
-        videoEl.classList.add("hidden");
-        recaptureBtn.classList.remove("hidden");
-        captureBtn.classList.add("hidden");
-      },
-      "image/jpeg",
-      0.9
-    );
+      previewImgEl.src = URL.createObjectURL(blob);
+      previewImgEl.classList.remove("hidden");
+      videoEl.classList.add("hidden");
+      captureBtn.classList.add("hidden");
+      recaptureBtn.classList.remove("hidden");
+    });
   },
 
   resetCapture({
@@ -54,8 +57,8 @@ export const CameraUtils = {
     previewImgEl.src = "";
     previewImgEl.classList.add("hidden");
     videoEl.classList.remove("hidden");
-    recaptureBtn.classList.add("hidden");
-    captureBtn.classList.remove("hidden");
     photoInputEl.value = "";
+    captureBtn.classList.remove("hidden");
+    recaptureBtn.classList.add("hidden");
   },
 };

@@ -1,9 +1,9 @@
 import { StoryApi } from "../../data/story-api";
 
 export class DetailPresenter {
-  constructor(view) {
+  constructor(view, model = new StoryApi()) {
     this.view = view;
-    this.api = new StoryApi();
+    this.model = model;
   }
 
   async loadStory(id) {
@@ -16,7 +16,7 @@ export class DetailPresenter {
     try {
       this.view.renderLoading();
 
-      const result = await this.api.getStoryById({ id, token });
+      const result = await this.model.getStoryById({ id, token });
 
       if (result.error) {
         throw new Error(result.message);

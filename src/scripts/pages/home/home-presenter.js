@@ -1,9 +1,10 @@
-import { StoryApi } from "../../data/story-api.js";
+import { CameraUtils } from "../../utils/camera-utils";
 
 export class HomePresenter {
-  constructor(view, token) {
+  constructor(view, token, model) {
     this.view = view;
     this.token = token;
+    this.model = model;
     this.currentPage = 1;
     this.filterLocation = false;
   }
@@ -11,7 +12,7 @@ export class HomePresenter {
   async loadStories() {
     try {
       this.view.showLoading();
-      const response = await new StoryApi().getAllStories({
+      const response = await this.model.getAllStories({
         token: this.token,
         page: this.currentPage,
         location: this.filterLocation ? 1 : 0,
@@ -21,7 +22,9 @@ export class HomePresenter {
       this.view.showStories(response.listStory);
       this.view.updatePagination(response.isLastPage, this.currentPage);
     } catch (err) {
-      this.view.showError(err.message);
+      this.view.showError(
+        err.message || "Terjadi kesalahan saat mengambil data."
+      );
     } finally {
       this.view.hideLoading();
     }

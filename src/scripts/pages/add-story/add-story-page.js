@@ -3,6 +3,7 @@
 import { AddStoryView } from "./add-story-view.js";
 import { AddStoryPresenter } from "./add-story-presenter.js";
 import { CameraUtils } from "../../utils/camera-utils.js";
+import { StoryApi } from "../../data/story-api.js";
 
 const AddStoryPage = {
   async render() {
@@ -96,25 +97,18 @@ const AddStoryPage = {
     }
 
     const view = new AddStoryView();
-    const presenter = new AddStoryPresenter(view, token);
+    const model = new StoryApi();
+    const presenter = new AddStoryPresenter(view, model, token);
 
-    // Set focus to text area
     view.focusTextArea();
-
-    // Initialize camera and map
     await presenter.initCamera(view.video);
-    presenter.initMap({
-      latInput: view.latInput,
-      lonInput: view.lonInput,
-    });
+    presenter.initMap({ latInput: view.latInput, lonInput: view.lonInput });
 
-    // Back button handler
     view.backButton.addEventListener("click", () => {
       presenter.stopCamera();
       presenter.navigateBack();
     });
 
-    // Camera handlers
     view.captureBtn.addEventListener("click", () => {
       CameraUtils.capturePhoto({
         videoEl: view.video,
@@ -137,7 +131,6 @@ const AddStoryPage = {
       });
     });
 
-    // Form submission
     view.form.addEventListener("submit", (e) => {
       e.preventDefault();
       view.errorMessage.textContent = "";

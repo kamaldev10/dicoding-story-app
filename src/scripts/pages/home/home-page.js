@@ -1,5 +1,6 @@
 import { HomeView } from "./home-view.js";
 import { HomePresenter } from "./home-presenter.js";
+import { StoryApi } from "../../data/story-api.js";
 
 const HomePage = {
   async render() {
@@ -39,6 +40,7 @@ const HomePage = {
 
   async afterRender() {
     const token = localStorage.getItem("authToken");
+    const model = new StoryApi();
     if (!token) {
       document.getElementById("homepage").innerHTML = ` 
        <div class="mb-6 mt-10 ">
@@ -54,7 +56,7 @@ const HomePage = {
     }
 
     const view = new HomeView();
-    const presenter = new HomePresenter(view, token);
+    const presenter = new HomePresenter(view, token, model);
 
     view.prevPageBtn.addEventListener("click", () => presenter.prevPage());
     view.nextPageBtn.addEventListener("click", () => presenter.nextPage());

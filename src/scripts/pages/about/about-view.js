@@ -15,7 +15,7 @@ class AboutView {
           
           <div class="flex flex-col md:flex-row items-center">
             <div class="md:w-1/2 mb-8 md:mb-0">
-              <div class="relative shadow-cyan-500 inset-shadow-lg inset-shadow-indigo-500/50 p-2 -translate-2 rounded-md bg-gray-500">
+              <div class="relative p-2 rounded-md bg-gray-500">
                 <img src="../../../public/images/foto-profil.jpg" alt="About Me" class="relative rounded-lg shadow-lg z-10">
               </div>
             </div>
@@ -25,16 +25,16 @@ class AboutView {
                 ${data.skills
                   .map(
                     (skill) => `
-                  <div class="flex items-center">
-                    <div class="bg-blue-100 p-3 rounded-full mr-3">
-                      <i class="fas fa-code text-blue-600"></i>
-                    </div>
-                    <div>
-                      <h4 class="font-medium text-gray-800">${skill.title}</h4>
-                      <p class="text-sm text-gray-600">${skill.description}</p>
-                    </div>
-                  </div>
-                `
+                      <div class="flex items-center">
+                        <div class="bg-blue-100 p-3 rounded-full mr-3">
+                          <i class="fas fa-code text-blue-600"></i>
+                        </div>
+                        <div>
+                          <h4 class="font-medium text-gray-800">${skill.title}</h4>
+                          <p class="text-sm text-gray-600">${skill.description}</p>
+                        </div>
+                      </div>
+                    `
                   )
                   .join("")}
               </div>
@@ -46,7 +46,7 @@ class AboutView {
   }
 
   getContainer() {
-    return this.container; // Mengembalikan elemen kontainer
+    return this.container;
   }
 }
 

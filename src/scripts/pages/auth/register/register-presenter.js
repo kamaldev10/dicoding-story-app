@@ -3,7 +3,7 @@ import AuthApi from "../../../data/auth-api";
 export default class RegisterPresenter {
   constructor(view) {
     this.view = view;
-    this.api = new AuthApi();
+    this.model = new AuthApi();
   }
 
   validateField(field, value) {

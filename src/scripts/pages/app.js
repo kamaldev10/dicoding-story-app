@@ -4,6 +4,7 @@ import NavigationView from "../components/navigation/navigation-view";
 import routes from "../routes/routes";
 
 import { getActiveRoute, parseActivePathname } from "../routes/url-parser";
+import { CameraUtils } from "../utils/camera-utils";
 
 class App {
   #content = null;
@@ -21,6 +22,8 @@ class App {
   }
 
   async renderPage() {
+    CameraUtils.stopCamera();
+
     const url = getActiveRoute();
     const page = routes[url] || routes["/"];
     const urlSegments = parseActivePathname();
