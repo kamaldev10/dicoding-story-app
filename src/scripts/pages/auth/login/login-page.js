@@ -44,7 +44,7 @@ const LoginPage = {
                 <p class="text-sm text-red-600 mt-1 hidden" id="error-password"></p>
               </div>
             </div>
-            <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700">Login</button>
+            <button aria-labelledby="login-button" type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700">Login</button>
             <p class="text-sm text-center mt-2">Belum punya akun? <a href="#/register" class="text-blue-600">Daftar</a></p>
             <p id="login-error" class="text-center text-red-600 mt-2 hidden"></p>
           </form>
