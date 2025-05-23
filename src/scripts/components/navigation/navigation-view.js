@@ -39,7 +39,7 @@ const NavigationView = {
             </div>
           </div>
           <!-- Mobile menu button -->
-          <button aria-labelledby="mobile-menu-button" id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100">
+          <button aria-labelledby="mobile-menu-button" id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-cyan-700">
             <i class="fas fa-bars text-xl"></i>
           </button>
         </nav>
@@ -94,7 +94,7 @@ const NavigationView = {
             </a>
           </div>
           <!-- Mobile menu button -->
-          <button aria-labelledby="mobile-menu-button" id="mobile-menu-btn" class=" p-2 rounded-lg hover:bg-gray-100">
+          <button aria-labelledby="mobile-menu-button" id="mobile-menu-btn" class=" p-2 rounded-lg hover:bg-cyan-700">
             <i class="fas fa-bars text-xl"></i>
           </button>
         </nav>
@@ -148,7 +148,7 @@ const NavigationView = {
     if (confirm("Apakah Anda yakin ingin logout?")) {
       localStorage.removeItem("authToken");
       localStorage.removeItem("userName");
-      localStorage.removeItem("userId"); // Jika ada
+      localStorage.removeItem("userId");
 
       this._showMessage("Logout berhasil!", "success");
 

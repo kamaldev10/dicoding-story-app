@@ -17,7 +17,7 @@ class App {
     this.#navigationContainer = navigationContainer;
     this.#navigationPresenter = new NavigationPresenter();
 
-    this.#setupDrawerEvents();
+    // this.#setupDrawerEvents();
   }
 
   async renderPage() {
@@ -33,20 +33,21 @@ class App {
 
     if (!isAuthPage) {
       // Render navigation and footer when not on auth pages
-      NavigationView.init(this.#navigationContainer, this.#navigationPresenter);
+      NavigationView.init(
+        this.#navigationContainer,
+        this.#navigationPresenter,
+        this.#navigationDrawer
+      );
       this.#navigationPresenter.setView(NavigationView);
       this.#navigationContainer.style.display = "block";
       this.#navigationDrawer.style.display = "block";
 
-      // Initialize and render the footer
-      await footerPresenter.init(); // Ensure footer is initialized
+      await footerPresenter.init();
     } else {
-      // Hide navigation and footer on auth pages
       this.#navigationContainer.innerHTML = "";
       this.#navigationContainer.style.display = "none";
       this.#navigationDrawer.style.display = "none";
 
-      // Optionally clear the footer if needed
       footerPresenter.clear(); // Clear the footer if on auth pages
     }
 
@@ -72,13 +73,13 @@ class App {
     }
   }
 
-  #setupDrawerEvents() {
-    this.#navigationDrawer.addEventListener("click", (e) => {
-      if (e.target.tagName.toLowerCase() === "a") {
-        this.#navigationDrawer.classList.remove("open");
-      }
-    });
-  }
+  // #setupDrawerEvents() {
+  //   this.#navigationDrawer.addEventListener("click", (e) => {
+  //     if (e.target.tagName.toLowerCase() === "a") {
+  //       this.#navigationDrawer.classList.remove("open");
+  //     }
+  //   });
+  // }
 }
 
 export default App;

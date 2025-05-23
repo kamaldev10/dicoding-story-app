@@ -35,7 +35,7 @@ export class HomeView {
       card.className = "border rounded md:flex cursor-pointer my-3";
       card.innerHTML = `
           <div class="md:shrink-0">
-            <img src="${story.photoUrl}" alt="${story.name}" class="h-48 max-w-md object-cover md:h-full md:w-48">
+            <img src="${story.photoUrl}" alt="${story.name}" class="h-48 max-w-md object-cover md:h-full md:w-48 sm:w-full sm:h-full">
           </div>
           <div class="p-8">
             <h3 class="capitalize tracking-wide text-sm text-black font-semibold">${story.name}</h3>
