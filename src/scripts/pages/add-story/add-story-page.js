@@ -11,7 +11,7 @@ const AddStoryPage = {
         <div class="max-w-lg mx-auto">
           <!-- Header -->
           <div class="flex items-center mb-6">
-            <button id="back-button" class="mr-4 text-cyan-600">
+            <button aria-labelledby="back button" id="back-button" class="mr-4 text-cyan-600">
               <i class="fa-solid fa-arrow-left text-xl"></i>
             </button>
             <h1 class="text-2xl font-bold">Tambah Cerita Baru</h1>
@@ -36,16 +36,17 @@ const AddStoryPage = {
               <video id="camera-stream" class="w-full rounded-md border mb-2" autoplay></video>
               <img id="photo-preview" class="w-full rounded-md border mb-2 hidden" alt="Preview hasil foto" />
               <div class="flex gap-2">
-                <button type="button" id="capture-btn" class="bg-green-600 text-white px-4 py-2 rounded-md">
+                <button aria-labelledby="capture button" type="button" id="capture-btn" class="bg-green-600 text-white px-4 py-2 rounded-md">
                   <i class="fa-solid fa-camera mr-1"></i> Ambil Foto
                 </button>
-                <button type="button" id="recapture-btn" class="bg-yellow-500 text-white px-4 py-2 rounded-md hidden">
+                <button aria-labelledby="recapture button" type="button" id="recapture-btn" class="bg-yellow-500 text-white px-4 py-2 rounded-md hidden">
                   <i class="fa-solid fa-rotate mr-1"></i> Ulangi
                 </button>
               </div>
               <canvas id="photo-canvas" class="hidden"></canvas>
               <div class="mt-3">
                 <input type="file" name="photo" id="photo-input" accept="image/*" required class="w-full" />
+                <label for="photo-input" type="hidden">input photo</label>
                 <p class="text-sm text-gray-500 mt-1">Atau pilih file manual (maksimal 1MB)</p>
               </div>
             </div>
@@ -53,13 +54,15 @@ const AddStoryPage = {
             <div>
               <label for="map" class="block font-medium mb-1">Lokasi (opsional)</label>
               <div id="map" class="h-64 rounded-md border mb-2"></div>
-              <input type="hidden" name="lat" />
-              <input type="hidden" name="lon" />
+              <input type="hidden" id="lat" name="lat" />
+              <label type="hidden" for="lat" class="hidden">input latitude</label>
+              <input type="hidden" id="lon" name="lon" />
+              <label type="hidden" for="lon" class="hidden">input longitude</label>
               <p class="text-sm text-gray-500">Klik peta untuk memilih lokasi</p>
             </div>
 
             <div class="flex justify-end space-x-3 mt-6">
-              <button type="submit" class="bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-2 rounded-md">
+              <button aria-labelledby="send story button" type="submit" class="bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-2 rounded-md">
                 <i class="fa-solid fa-paper-plane mr-1"></i> Kirim Cerita
               </button>
             </div>

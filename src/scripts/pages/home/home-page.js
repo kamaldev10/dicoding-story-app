@@ -8,21 +8,22 @@ const HomePage = {
         <!-- Header & tombol add story -->
         <div class="flex justify-between items-center my-4">
           <h1 class="text-2xl font-bold">Stories</h1>
-          <button id="add-story" class="bg-gray-500 text-white px-4 py-2 rounded"><i class="fa-solid fa-plus"></i>Add Story</button>
+          <button aria-labelledby="add-story-button" id="add-story" class="bg-gray-500 text-white px-4 py-2 rounded"><i class="fa-solid fa-plus"></i>Add Story</button>
         </div>
 
         <!-- Filter lokasi -->
         <div class="mb-4">
           <label class="flex items-center space-x-2">
             <input type="checkbox" id="filter-location" />
+            <label type="hidden" for="filter-location">filter location</label>
             <span>Hanya tampilkan cerita dengan lokasi</span>
           </label>
         </div>
 
         <!-- Pagination -->
         <div id="pagination" class="mt-6 flex justify-around">
-          <button id="prev-page" class="px-4 py-2 border-solid border-2 border-cyan-500 rounded">Previous</button>
-          <button id="next-page" class="px-4 py-2 border-solid border-2 border-cyan-500 rounded">Next</button>
+          <button aria-labelledby="previous-button" id="prev-page" class="px-4 py-2 border-solid border-2 border-cyan-500 rounded">Previous</button>
+          <button aria-labelledby="next-button" id="next-page" class="px-4 py-2 border-solid border-2 border-cyan-500 rounded">Next</button>
         </div>
 
         <!-- List cerita -->

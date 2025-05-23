@@ -39,7 +39,7 @@ const NavigationView = {
             </div>
           </div>
           <!-- Mobile menu button -->
-          <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100">
+          <button aria-labelledby="mobile-menu-button" id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100">
             <i class="fas fa-bars text-xl"></i>
           </button>
         </nav>
@@ -94,7 +94,7 @@ const NavigationView = {
             </a>
           </div>
           <!-- Mobile menu button -->
-          <button id="mobile-menu-btn" class=" p-2 rounded-lg hover:bg-gray-100">
+          <button aria-labelledby="mobile-menu-button" id="mobile-menu-btn" class=" p-2 rounded-lg hover:bg-gray-100">
             <i class="fas fa-bars text-xl"></i>
           </button>
         </nav>
