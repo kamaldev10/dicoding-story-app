@@ -1,5 +1,6 @@
 import { CameraUtils } from "../../utils/camera-utils.js";
 import { MapUtils } from "../../utils/map-utils.js";
+import toastr from "toastr";
 
 export class AddStoryPresenter {
   constructor(view, model, token) {
@@ -19,7 +20,8 @@ export class AddStoryPresenter {
         lon,
       });
       this.view.resetForm();
-      alert("Cerita berhasil dikirim!");
+      CameraUtils.stopCamera();
+      toastr.success("cerita berhasil dikirim");
     } catch (err) {
       this.view.showError(err.message);
     } finally {
@@ -29,7 +31,7 @@ export class AddStoryPresenter {
 
   async initCamera(videoElement) {
     try {
-      await CameraUtils.startCamera(videoElement); // gunakan CameraUtils
+      await CameraUtils.startCamera(videoElement);
     } catch (err) {
       console.error("Kamera tidak tersedia:", err);
       this.view.showError(
@@ -38,15 +40,7 @@ export class AddStoryPresenter {
     }
   }
 
-  stopCamera() {
-    CameraUtils.stopCamera(); // gunakan CameraUtils
-  }
-
   initMap({ latInput, lonInput }) {
     MapUtils.initMap({ mapContainerId: "map", latInput, lonInput });
-  }
-
-  navigateBack() {
-    window.location.hash = "/";
   }
 }

@@ -6,12 +6,12 @@ import AddStoryPage from "../pages/add-story/add-story-page";
 import AboutPage from "../pages/about/about-page";
 
 const routes = {
-  "/": HomePage,
-  "/login": LoginPage,
-  "/register": RegisterPage,
-  "/about": AboutPage,
-  "/stories/:id": DetailPage,
-  "/stories/add-story": AddStoryPage,
+  "#/": HomePage,
+  "#/login": LoginPage,
+  "#/register": RegisterPage,
+  "#/about": AboutPage,
+  "#/stories/:id": DetailPage,
+  "#/add-story": AddStoryPage,
 };
 
 export default routes;

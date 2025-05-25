@@ -1,5 +1,3 @@
-import { CameraUtils } from "../../utils/camera-utils";
-
 export class HomePresenter {
   constructor(view, token, model) {
     this.view = view;
@@ -46,10 +44,5 @@ export class HomePresenter {
     this.filterLocation = checked;
     this.currentPage = 1;
     this.loadStories();
-  }
-
-  // New method to redirect to add story page
-  redirectToAddStory() {
-    window.location.hash = "/stories/add-story";
   }
 }

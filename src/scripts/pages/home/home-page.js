@@ -39,8 +39,8 @@ const HomePage = {
   },
 
   async afterRender() {
-    const token = localStorage.getItem("authToken");
     const model = new StoryApi();
+    const token = model.getToken();
     if (!token) {
       document.getElementById("homepage").innerHTML = ` 
        <div class="mb-6 mt-10 ">
@@ -67,9 +67,13 @@ const HomePage = {
         presenter.setLocationFilter(e.target.checked);
       });
 
+    const redirectToAddStory = () => {
+      window.location.hash = "#/add-story";
+    };
+
     // Changed: Now redirects to add story page instead of showing modal
     view.addStoryBtn.addEventListener("click", () => {
-      presenter.redirectToAddStory();
+      redirectToAddStory();
     });
 
     presenter.loadStories();

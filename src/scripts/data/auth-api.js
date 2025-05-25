@@ -1,4 +1,3 @@
-// Fixed AuthApi.js
 import CONFIG from "../config";
 
 class AuthApi {
@@ -8,8 +7,6 @@ class AuthApi {
 
   async register({ name, email, password }) {
     try {
-      console.log("Register data:", { name, email, password });
-
       const response = await fetch(`${this.baseUrl}/register`, {
         method: "POST",
         headers: {

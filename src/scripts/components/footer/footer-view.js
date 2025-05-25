@@ -1,35 +1,47 @@
-// footer-view.js
 export const footerView = {
-  async render(model) {
-    // Build social links html dynamically
-    const socialLinksHtml = model.socialLinks
+  containerId: "footer",
+
+  render(data) {
+    const container = document.getElementById(this.containerId);
+    if (!container) return;
+
+    container.innerHTML = this._template(data);
+    this.afterRender();
+  },
+
+  clear() {
+    const container = document.getElementById(this.containerId);
+    if (container) {
+      container.innerHTML = "";
+    }
+  },
+
+  _template(data) {
+    const socialLinksHtml = data.socialLinks
       .map(
         (social) => `
       <a href="${social.url}" target="_blank" rel="noopener" class="hover:text-blue-400 transition duration-300">
         <i class="${social.icon} text-xl"></i>
-      </a>
-    `
+      </a>`
       )
       .join("");
 
-    // Build bottom links html dynamically
-    const bottomLinksHtml = model.links
+    const bottomLinksHtml = data.links
       .map(
         (link) => `
       <li>
         <a href="${link.url}" class="text-gray-400 hover:text-white transition duration-300">${link.text}</a>
-      </li>
-    `
+      </li>`
       )
       .join("");
 
     return `
-    <footer id="footerLinks" class="bg-gray-800 text-white py-12">
+    <footer class="bg-gray-800 text-white py-12">
       <div class="container mx-auto px-4">
         <div class="flex flex-col md:flex-row justify-between items-center">
           <div class="mb-6 md:mb-0">
-            <h1 class="text-2xl font-bold">${model.appName}</h1>
-            <p class="mt-2 text-gray-400">${model.tagline}</p>
+            <h1 class="text-2xl font-bold">${data.appName}</h1>
+            <p class="mt-2 text-gray-400">${data.tagline}</p>
           </div>
           <div class="flex space-x-6">
             ${socialLinksHtml}
@@ -37,7 +49,7 @@ export const footerView = {
         </div>
         <hr class="border-gray-700 my-8">
         <div class="flex flex-col md:flex-row justify-between items-center">
-          <p class="text-gray-400">© ${model.year} ${model.appName}. All rights reserved.</p>
+          <p class="text-gray-400">© ${data.year} ${data.appName}. All rights reserved.</p>
           <div class="mt-4 md:mt-0">
             <ul class="flex space-x-6">
               ${bottomLinksHtml}
@@ -49,16 +61,14 @@ export const footerView = {
     `;
   },
 
-  async afterRender() {
-    // Example: smooth scrolling for any anchor links (adjust as needed)
+  afterRender() {
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      const targetId = anchor.getAttribute("href");
+      const excluded = ["/about", "/"];
+
+      if (excluded.includes(targetId)) return;
+
       anchor.addEventListener("click", (e) => {
-        const targetId = anchor.getAttribute("href");
-
-        if ((targetId === "#logout", "#login", "about", "register")) {
-          return;
-        }
-
         e.preventDefault();
         const targetEl = document.querySelector(targetId);
         if (targetEl) {

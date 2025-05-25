@@ -56,7 +56,7 @@ export default class RegisterPresenter {
     this.view.setLoadingState(true);
 
     try {
-      const result = await this.api.register({ name, email, password });
+      const result = await this.model.register({ name, email, password });
 
       if (result.error) {
         throw new Error(result.message || "Registrasi gagal.");

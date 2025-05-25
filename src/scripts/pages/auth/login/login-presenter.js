@@ -1,4 +1,5 @@
 import AuthApi from "../../../data/auth-api";
+import toastr from "toastr";
 
 export class LoginPresenter {
   constructor(view) {
@@ -42,8 +43,10 @@ export class LoginPresenter {
       }
 
       this.view.redirectToHome();
+      toastr.success("login berhasil");
     } catch (error) {
       this.view.showLoginError(error.message);
+      toastr.warning("Login gagal");
     } finally {
       this.view.setLoadingState(false);
     }

@@ -7,13 +7,13 @@ export class DetailPresenter {
   }
 
   async loadStory(id) {
-    const token = localStorage.getItem("authToken");
-    if (!token) {
-      this.view.showError("Token tidak ditemukan. Silakan login.");
-      return;
-    }
-
     try {
+      const token = this.model.getToken();
+      if (!token) {
+        this.view.showError("Token tidak ditemukan. Silakan login.");
+        return;
+      }
+
       this.view.renderLoading();
 
       const result = await this.model.getStoryById({ id, token });

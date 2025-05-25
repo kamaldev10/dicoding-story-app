@@ -1,6 +1,6 @@
 import "../styles/styles.css";
 import App from "./pages/app";
-import { CameraUtils } from "./utils/camera-utils";
+
 document.addEventListener("DOMContentLoaded", async () => {
   const mainContent = document.querySelector("#mainContent");
   const drawerButton = document.querySelector("#drawer-button");
@@ -14,10 +14,26 @@ document.addEventListener("DOMContentLoaded", async () => {
     navigationContainer: navigationContainer,
   });
 
+  if (!location.hash) {
+    location.hash = "#/";
+  }
   await app.renderPage();
 
   window.addEventListener("hashchange", async () => {
     await app.renderPage();
+    if (location.hash === "#mainContent") {
+      const mainContent = document.getElementById("mainContent");
+      const skipLink = document.getElementById("skip-to-content-btn");
+
+      if (mainContent) {
+        mainContent.focus();
+
+        // Hapus fokus dari skip link agar tersembunyi kembali
+        if (skipLink) {
+          skipLink.blur();
+        }
+      }
+    }
   });
 
   window.addEventListener("load", async () => {

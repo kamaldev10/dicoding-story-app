@@ -64,4 +64,8 @@ export class StoryApi {
 
     return result;
   }
+
+  getToken() {
+    return localStorage.getItem("authToken");
+  }
 }

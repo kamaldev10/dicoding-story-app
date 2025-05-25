@@ -25,18 +25,29 @@ body {
   transform: translateX(0) !important;
 }
 
-
 .skip-to-content {
-  position: absolute !important;
-  height: 1px;
+  position: absolute;
+  left: -999px;
+  top: auto;
   width: 1px;
+  height: 1px;
   overflow: hidden;
   clip: rect(1px, 1px, 1px, 1px);
-  color: red;
 }
 
 .skip-to-content:focus {
-  position: unset !important;
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  width: auto;
+  height: auto;
+  clip: auto;
+  overflow: visible;
+  z-index: 1000;
+  background: white;
+  color: black;
+  border: 2px solid black;
+  padding: 8px;
 }
 
 

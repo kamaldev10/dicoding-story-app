@@ -61,10 +61,7 @@ export class HomeView {
     this.nextPageBtn.disabled = isLastPage;
   }
 
-  // We're removing the modal-related methods as they won't be needed anymore
-
   showModalError(msg) {
-    // This method is kept for backward compatibility
     this.showError(msg);
   }
 }

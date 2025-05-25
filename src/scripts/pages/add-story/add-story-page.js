@@ -80,7 +80,8 @@ const AddStoryPage = {
   },
 
   async afterRender() {
-    const token = localStorage.getItem("authToken");
+    const model = new StoryApi();
+    const token = model.getToken();
     if (!token) {
       document.getElementById("add-story-page").innerHTML = `
         <div class="flex flex-col items-center justify-center h-screen">
@@ -97,7 +98,6 @@ const AddStoryPage = {
     }
 
     const view = new AddStoryView();
-    const model = new StoryApi();
     const presenter = new AddStoryPresenter(view, model, token);
 
     view.focusTextArea();
@@ -106,7 +106,7 @@ const AddStoryPage = {
 
     view.backButton.addEventListener("click", () => {
       presenter.stopCamera();
-      presenter.navigateBack();
+      window.location.hash = "/";
     });
 
     view.captureBtn.addEventListener("click", () => {
@@ -155,8 +155,8 @@ const AddStoryPage = {
         return;
       }
 
-      presenter.stopCamera();
       presenter.submitNewStory({ description, photo, lat, lon });
+      window.location.hash = "/";
     });
   },
 };
